@@ -2,6 +2,22 @@
   "name": "expense-tracker-web",
   "version": "0.1.0",
   "description": "Web3 expense tracking frontend built with Next.js",
+  "homepage": "https://github.com/EthGlobal-2025/web",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EthGlobal-2025/web.git"
+  },
+  "keywords": [
+    "web3",
+    "ethereum",
+    "expense-tracker",
+    "nextjs",
+    "typescript",
+    "tailwindcss",
+    "wagmi"
+  ],
+  "author": "EthGlobal-2025",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
