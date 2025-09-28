@@ -17,10 +17,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { X, Plus, Users, Check } from "lucide-react";
-<<<<<<< HEAD
-=======
 import { useExpenseContract } from "@/hooks/useExpenseContract";
->>>>>>> 996be16 (feat: updates)
 
 const createGroupSchema = z.object({
   groupName: z
@@ -39,11 +36,6 @@ type CreateGroupFormData = z.infer<typeof createGroupSchema>;
 interface CreateGroupProps {
   onClose: () => void;
   userAddress: string;
-<<<<<<< HEAD
-}
-
-export function CreateGroup({ onClose, userAddress }: CreateGroupProps) {
-=======
   onGroupCreated?: () => void; // Add callback to refresh list
 }
 
@@ -55,7 +47,6 @@ export function CreateGroup({
   const [members, setMembers] = useState<string[]>([]);
   const [isCreating, setIsCreating] = useState(false);
   const { createGroup } = useExpenseContract();
->>>>>>> 996be16 (feat: updates)
   const {
     register,
     handleSubmit,
@@ -73,12 +64,6 @@ export function CreateGroup({
     },
   });
 
-<<<<<<< HEAD
-  const [members, setMembers] = useState<string[]>([]);
-  const [isCreating, setIsCreating] = useState(false);
-
-=======
->>>>>>> 996be16 (feat: updates)
   const memberAddress = watch("memberAddress");
   const groupName = watch("groupName");
 
@@ -86,12 +71,8 @@ export function CreateGroup({
     if (
       memberAddress &&
       !members.includes(memberAddress) &&
-<<<<<<< HEAD
-      memberAddress !== userAddress
-=======
       memberAddress !== userAddress &&
       /^0x[a-fA-F0-9]{40}$/.test(memberAddress) // Validate Ethereum address
->>>>>>> 996be16 (feat: updates)
     ) {
       setMembers([...members, memberAddress]);
       setValue("memberAddress", "");
@@ -103,9 +84,6 @@ export function CreateGroup({
   };
 
   const onSubmit = async (data: CreateGroupFormData) => {
-<<<<<<< HEAD
-    console.log({ data, members });
-=======
     if (!data.groupName.trim()) {
       alert("Please enter a group name");
       return;
@@ -162,7 +140,6 @@ Your group "${data.groupName}" has been created on the blockchain.`);
     } finally {
       setIsCreating(false);
     }
->>>>>>> 996be16 (feat: updates)
   };
 
   return (
@@ -246,29 +223,19 @@ Your group "${data.groupName}" has been created on the blockchain.`);
                 <Button
                   type="button"
                   onClick={addMemberToList}
-<<<<<<< HEAD
-                  disabled={!memberAddress || memberAddress === userAddress}
-=======
                   disabled={
                     !memberAddress ||
                     memberAddress === userAddress ||
                     !/^0x[a-fA-F0-9]{40}$/.test(memberAddress)
                   }
->>>>>>> 996be16 (feat: updates)
                 >
                   <Plus className="w-4 h-4" />
                 </Button>
               </div>
 
-<<<<<<< HEAD
-              {memberAddress === userAddress && (
-                <p className="text-sm text-amber-600">
-                  You're already the group creator
-=======
               {memberAddress && !/^0x[a-fA-F0-9]{40}$/.test(memberAddress) && (
                 <p className="text-sm text-red-600">
                   Please enter a valid Ethereum address (0x...)
->>>>>>> 996be16 (feat: updates)
                 </p>
               )}
 
